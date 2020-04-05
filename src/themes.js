@@ -11,7 +11,7 @@ export default [
     overlay: 'radial-gradient(circle, rgba(227,217,188,0.7) 0%, rgba(246,210,147,0.7) 35%, rgba(252,135,72,0.7) 65%, rgba(161,97,66,0.7) 90%, rgba(75,37,34,1) 100%)',
     textStyles: {
       lineHeight: 1.3,
-      fontSize: '102px',
+      fontSize: '6.3rem',
       color: '#000',
       fontFamily: 'TLOP',
     }
@@ -21,7 +21,7 @@ export default [
     overlay: `radial-gradient(circle, rgba(255,0,0,0.6) 0%, rgba(213,219,223,0.6) 46%, rgba(115,188,198,0.6) 77%, rgba(0,209,186,0.6) 100%)`, 
     textStyles: {
       fontFamily: 'YEEZUS',
-      fontSize: '120px',
+      fontSize: '7rem',
       lineHeight: 1.5,
     }
   },
@@ -41,7 +41,8 @@ export default [
       fontFamily: 'JIK',
       color: 'rgb(255,239,0)',
       textTransform: 'capitalize',
-      lineHeight: '1.3'
+      lineHeight: '1.3',
+      fontSize: '5.25rem',
     }
   },
 ]

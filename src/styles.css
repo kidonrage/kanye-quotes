@@ -16,9 +16,10 @@ body {
 #quote-container {
   position: relative;
   color: #fff;
-  font-size: 84px;
+  font-size: 5.25rem;
   max-width: 70%;
   margin: 0 auto;
+  padding: 25px;
   top: 0;
   right: 0;
   left: 0;
@@ -39,8 +40,11 @@ body {
 
 #quote {
   max-width: 100%;
-  padding: 25px;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 10;
 }
 
 .load-button {
@@ -105,7 +109,7 @@ body {
 }
 
 .heading {
-  font-size: 96px;
+  font-size: 6rem;
   margin-bottom: 5px;
 }
 
@@ -143,5 +147,45 @@ body {
     width: 72px;
     height: 72px;
     opacity: 0;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 10px;
+  }
+  .load-button {
+    position: relative;
+  }
+  #quote-container:hover .load-button {
+    bottom: 0;
+  }
+  #quote-container {
+    max-width: 100%;
+  }
+  #quote {
+    margin-bottom: 25px;
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  html {
+    font-size: 8px;
   }
 }
