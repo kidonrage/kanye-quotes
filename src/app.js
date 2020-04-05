@@ -29,6 +29,7 @@ function updateQuote(quoteText) {
 
   return new Promise((resolve, reject) => {
     loadImage(imageUrl)
+      .then(() => loadFont(theme.textStyles.fontFamily))
       .then(() => {
         const BGImage = `${theme.overlay}, url(${imageUrl})`
         $background.style.backgroundImage = BGImage;
@@ -45,12 +46,19 @@ function updateQuote(quoteText) {
   })
 }
 
-function loadImage(url, callback) {
+function loadImage(url) {
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.src = url;
     image.onload = resolve;
   })
+}
+
+function loadFont(family) {
+  return new Promise((resolve, reject) => {
+    document.fonts.load(`1em ${family}`)
+      .then(resolve)
+  }) 
 }
 
 function randomIntFromInterval(min, max) { // min and max included 

@@ -29,9 +29,11 @@ export default [
     // 808
     overlay: `linear-gradient(90deg, rgba(255,255,255,0.75) 10%, rgba(211,140,124,0.75) 10%, rgba(211,140,124,0.75) 35%, rgba(201,221,221,0.75) 35%, rgba(201,221,221,0.75) 65%, rgba(255,184,175,0.75) 65%, rgba(255,184,175,0.75) 90%, rgba(245,0,0,0.75) 90%, rgba(245,0,0,0.75) 100%)`, 
     textStyles: {
-      fontFamily: '808',
+      fontFamily: 'Heartbreak',
       backgroundColor: 'rgba(255,255,255,.75)',
       color: 'rgba(57, 69, 70)',
+      textTransform: 'uppercase',
+      lineHeight: '1.2'
     }
   },
   {

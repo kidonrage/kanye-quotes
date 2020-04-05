@@ -34,8 +34,8 @@
 }
 
 @font-face {
-  font-family: '808';
-  src: url('../fonts/808/808.eot?#iefix') format('embedded-opentype'),  url('../fonts/808/808.woff') format('woff'), url('../fonts/808/808.ttf')  format('truetype'), url('../fonts/808/808.svg#LibreBarcode39Text-Regular') format('svg');
+  font-family: 'Heartbreak';
+  src: url('../fonts/808/808.eot?#iefix') format('embedded-opentype'),  url('../fonts/808/808.woff') format('woff'), url('../fonts/808/808.ttf')  format('truetype'), url('../fonts/808/808.svg#WorkSans-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
