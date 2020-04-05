@@ -6,15 +6,17 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
+  font-family: 'BebasNeue', sans-serif;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.quote-container {
+#quote-container {
   position: relative;
-  z-index: 100;
   color: #fff;
   font-size: 84px;
-  position: absolute;
   max-width: 70%;
   margin: 0 auto;
   top: 0;
@@ -24,11 +26,122 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-transform: uppercase;
+  flex-direction: column;
+}
+#quote-container:hover .load-button {
+  opacity: 0.5;
+  bottom: -35px;
+}
+
+#quote-container:hover .load-button:hover {
+  opacity: 1;
 }
 
 #quote {
   max-width: 100%;
   padding: 25px;
   text-align: center;
+}
+
+.load-button {
+  height: 35px;
+  position: absolute;
+  bottom: 60px;
+  margin: 0 auto;
+  display: block;
+  background: none;
+  border: none;
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity .25s ease, bottom .25s ease;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+  outline: none;
+}
+.load-button:hover {
+  opacity: 1;
+}
+
+@keyframes loading-open {
+  0% { clip-path: circle(0%); }
+  100% { clip-path: circle(100%); }
+}
+
+@keyframes loading-close {
+  0% { clip-path: circle(100%); }
+  100% { clip-path: circle(0%); }
+}
+
+#loading {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  clip-path: circle(100%);
+  animation-timing-function: ease-out;
+  background-color: #fff;
+  color: #000;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#loading.hidden {
+  clip-path: circle(0%);
+}
+#loading.opening {
+  animation-name: loading-open;
+}
+#loading.hiding {
+  animation-name: loading-close;
+}
+
+#loading .text-content {
+  margin-bottom: 35px;
+}
+
+.heading {
+  font-size: 96px;
+  margin-bottom: 5px;
+}
+
+.author {
+  font-size: 32px;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
 }

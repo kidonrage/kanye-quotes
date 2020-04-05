@@ -1,57 +1,9 @@
 import './styles.css';
+import themes from './themes';
+
 let previousImageIdx = 0;
 
-const getRandomTheme = (overlayOpacity = 0.6) => {
-  const themes = [
-    {
-      // KSG
-      overlay: `radial-gradient(circle, rgba(204,71,122,${overlayOpacity}) 0%, rgba(227,187,59,${overlayOpacity}) 60%, rgba(106,164,162,${overlayOpacity}) 100%)`, 
-      textStyles: {
-        fontFamily: 'KSG'
-      }
-    },
-    {
-      // TLOP
-      overlay: 'radial-gradient(circle, rgba(227,217,188,0.7) 0%, rgba(246,210,147,0.7) 35%, rgba(252,135,72,0.7) 65%, rgba(161,97,66,0.7) 90%, rgba(75,37,34,1) 100%)',
-      textStyles: {
-        lineHeight: 1.3,
-        fontSize: '102px',
-        color: '#000',
-        fontFamily: 'TLOP',
-      }
-    },
-    {
-      // YEEZUS
-      overlay: `radial-gradient(circle, rgba(255,0,0,${overlayOpacity}) 0%, rgba(213,219,223,${overlayOpacity}) 46%, rgba(115,188,198,${overlayOpacity}) 77%, rgba(0,209,186,${overlayOpacity}) 100%)`, 
-      textStyles: {
-        fontFamily: 'YEEZUS',
-        fontSize: '120px',
-        lineHeight: 1.5,
-      }
-    },
-    {
-      // 808
-      overlay: `linear-gradient(90deg, rgba(255,255,255,0.75) 10%, rgba(211,140,124,0.75) 10%, rgba(211,140,124,0.75) 35%, rgba(201,221,221,0.75) 35%, rgba(201,221,221,0.75) 65%, rgba(255,184,175,0.75) 65%, rgba(255,184,175,0.75) 90%, rgba(245,0,0,0.75) 90%, rgba(245,0,0,0.75) 100%)`, 
-      textStyles: {
-        fontFamily: '808',
-        backgroundColor: 'rgba(255,255,255,.75)',
-        color: 'rgba(57, 69, 70)',
-      }
-    },
-    {
-      // JIK
-      overlay: `radial-gradient(circle, rgba(38,0,212,${overlayOpacity}) 0%, rgba(36,0,193,${overlayOpacity}) 11%, rgba(33,0,184,${overlayOpacity}) 100%)`, 
-      textStyles: {
-        fontFamily: 'JIK',
-        color: 'rgb(255,239,0)'
-      }
-    },
-  ]
-
-  return themes[4]
-  return themes[Math.floor(Math.random() * themes.length)]
-} 
-
+const getRandomTheme = () => themes[Math.floor(Math.random() * themes.length)]
 
 function getRandomImageUrl() {
   const lastImageIndex = 24;
@@ -67,9 +19,9 @@ function getRandomImageUrl() {
   return `images/${imageIndex}.jpg`;
 }
 
-function changeImage() {
+function updateQuote() {
   const $background = document.body;
-  const $quote = document.getElementById('quote');
+  const $quoteContainer = document.getElementById('quote-container');
 
   const theme = getRandomTheme();
   const imageUrl = getRandomImageUrl();
@@ -77,9 +29,9 @@ function changeImage() {
   const BGImage = `${theme.overlay}, url(${imageUrl})`
   $background.style.backgroundImage = BGImage;
 
-  $quote.removeAttribute('style');
+  $quoteContainer.removeAttribute('style');
   Object.keys(theme.textStyles).forEach(key => {
-    $quote.style[key] = theme.textStyles[key]
+    $quoteContainer.style[key] = theme.textStyles[key]
   })
 }
 
@@ -99,14 +51,51 @@ function renderQuote(quoteText) {
   $quote.innerText = quoteText;
 }
 
-document.addEventListener('click', refresh)
+document.addEventListener('click', handleClick)
+
+function handleClick(event) {
+  const dataBtn = event.target.dataset.btn;
+  if (dataBtn) {
+    if (dataBtn === 'load') {
+      refresh();
+    }
+  }
+}
+
+const getLoader = () => {
+  const ANIMATION_DURATION = 1000;
+  const $loader = document.getElementById('loading');
+  $loader.style.animationDuration = `${ANIMATION_DURATION / 1000}s`;
+
+  return {
+    close() {
+      $loader.classList.add('hiding');
+      setTimeout(() => {
+        $loader.classList.add('hidden');
+        $loader.classList.remove('hiding');
+      }, ANIMATION_DURATION);
+    },
+    open() {
+      $loader.classList.add('opening');
+      $loader.classList.remove('hidden')
+      return new Promise((resolve, reject) => setTimeout(() => {
+        $loader.classList.remove('opening')
+        resolve();
+      }, ANIMATION_DURATION));
+    }
+  }
+}
 
 function refresh() {
-  getQuote()
+  const loader = getLoader();
+  
+  loader.open()
+    .then(getQuote)
     .then((quote) => {
       renderQuote(quote);
-      changeImage();
-    })
+      updateQuote();
+      loader.close();
+    });
 }
 
 refresh();

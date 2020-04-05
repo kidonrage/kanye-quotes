@@ -1,10 +1,15 @@
-@font-face {font-family: "JIK";
-  src: url("../fonts/jik/jik.eot"); /* IE9*/
-  src: url("../fonts/jik/jik.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/jik/jik.woff2") format("woff2"), /* chrome、firefox */
-  url("../fonts/jik/jik.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/jik/jik.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/jik/jik.svg#GT Super Display Medium") format("svg"); /* iOS 4.1- */
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('../fonts/BebasNeue/BebasNeue-Regular.eot?#iefix') format('embedded-opentype'),  url('../fonts/BebasNeue/BebasNeue-Regular.woff') format('woff'), url('../fonts/BebasNeue/BebasNeue-Regular.ttf')  format('truetype'), url('../fonts/BebasNeue/BebasNeue-Regular.svg#LibreBarcode39Text-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JIK';
+  src: url('../fonts/jik/jik.eot?#iefix') format('embedded-opentype'),  url('../fonts/jik/jik.woff') format('woff'), url('../fonts/jik/jik.ttf')  format('truetype'), url('../fonts/jik/jik.svg#LibreBarcode39Text-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
