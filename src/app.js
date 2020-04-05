@@ -58,6 +58,8 @@ function loadFont(family) {
   return new Promise((resolve, reject) => {
     document.fonts.load(`1em ${family}`)
       .then(resolve)
+      .catch(console.error)
+      .finally(resolve)
   }) 
 }
 
