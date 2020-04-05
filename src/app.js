@@ -1,4 +1,4 @@
-import './styles.css';
+import './styles/main.css';
 import themes from './themes';
 
 let previousImageIdx = 0;
@@ -19,22 +19,39 @@ function getRandomImageUrl() {
   return `images/${imageIndex}.jpg`;
 }
 
-function updateQuote() {
+function updateQuote(quoteText) {
   const $background = document.body;
   const $quoteContainer = document.getElementById('quote-container');
+  const $quote = document.getElementById('quote');
 
   const theme = getRandomTheme();
   const imageUrl = getRandomImageUrl();
 
-  const BGImage = `${theme.overlay}, url(${imageUrl})`
-  $background.style.backgroundImage = BGImage;
+  return new Promise((resolve, reject) => {
+    loadImage(imageUrl)
+      .then(() => {
+        const BGImage = `${theme.overlay}, url(${imageUrl})`
+        $background.style.backgroundImage = BGImage;
+      
+        $quoteContainer.removeAttribute('style');
+        Object.keys(theme.textStyles).forEach(key => {
+          $quoteContainer.style[key] = theme.textStyles[key]
+        })
+        
+        $quote.innerText = quoteText;
 
-  $quoteContainer.removeAttribute('style');
-  Object.keys(theme.textStyles).forEach(key => {
-    $quoteContainer.style[key] = theme.textStyles[key]
+        resolve();
+      })
   })
 }
 
+function loadImage(url, callback) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.src = url;
+    image.onload = resolve;
+  })
+}
 
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -44,11 +61,6 @@ function getQuote() {
   return fetch('https://api.kanye.rest')
           .then(response => response.json())
           .then(response => response.quote)
-}
-
-function renderQuote(quoteText) {
-  const $quote = document.getElementById('quote');
-  $quote.innerText = quoteText;
 }
 
 document.addEventListener('click', handleClick)
@@ -91,11 +103,8 @@ function refresh() {
   
   loader.open()
     .then(getQuote)
-    .then((quote) => {
-      renderQuote(quote);
-      updateQuote();
-      loader.close();
-    });
+    .then(updateQuote)
+    .then(loader.close);
 }
 
 refresh();
