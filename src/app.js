@@ -18,7 +18,6 @@ const getRandomTheme = (overlayOpacity = 0.6) => {
         fontSize: '102px',
         color: '#000',
         fontFamily: 'TLOP',
-        textAlign: 'center'
       }
     },
     {
@@ -27,14 +26,16 @@ const getRandomTheme = (overlayOpacity = 0.6) => {
       textStyles: {
         fontFamily: 'YEEZUS',
         fontSize: '120px',
-        lineHeight: 1.5
+        lineHeight: 1.5,
       }
     },
     {
       // 808
-      overlay: `linear-gradient(90deg, rgba(255,255,255,${overlayOpacity}) 20%, rgba(211,140,124,${overlayOpacity}) 20%, rgba(211,140,124,${overlayOpacity}) 40%, rgba(201,221,221,${overlayOpacity}) 40%, rgba(201,221,221,${overlayOpacity}) 60%, rgba(255,184,175,${overlayOpacity}) 60%, rgba(255,184,175,${overlayOpacity}) 80%, rgba(245,0,0,${overlayOpacity}) 80%, rgba(245,0,0,${overlayOpacity}) 100%)`, 
+      overlay: `linear-gradient(90deg, rgba(255,255,255,0.75) 10%, rgba(211,140,124,0.75) 10%, rgba(211,140,124,0.75) 35%, rgba(201,221,221,0.75) 35%, rgba(201,221,221,0.75) 65%, rgba(255,184,175,0.75) 65%, rgba(255,184,175,0.75) 90%, rgba(245,0,0,0.75) 90%, rgba(245,0,0,0.75) 100%)`, 
       textStyles: {
-        fontFamily: '808'
+        fontFamily: '808',
+        backgroundColor: 'rgba(255,255,255,.75)',
+        color: 'rgba(57, 69, 70)',
       }
     },
     {
@@ -47,7 +48,7 @@ const getRandomTheme = (overlayOpacity = 0.6) => {
     },
   ]
 
-  return themes[0]
+  return themes[4]
   return themes[Math.floor(Math.random() * themes.length)]
 } 
 
