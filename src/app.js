@@ -1,9 +1,11 @@
 import './styles/main.css';
 import themes from './themes';
+import { getLoadingView } from './loadingView';
+import { randomIntFromInterval } from './utils';
 
 let previousImageIdx = 0;
 
-const getRandomTheme = () => themes[Math.floor(Math.random() * themes.length)]
+const getRandomTheme = () => themes[randomIntFromInterval(0, themes.length - 1)]
 
 function getRandomImageUrl() {
   const lastImageIndex = 24;
@@ -63,14 +65,20 @@ function loadFont(family) {
   }) 
 }
 
-function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 function getQuote() {
   return fetch('https://api.kanye.rest')
           .then(response => response.json())
           .then(response => response.quote)
+}
+
+function refresh() {
+  const loadingView = getLoadingView();
+  
+  loadingView.open()
+    .then(getQuote)
+    .then(updateQuote)
+    .then(loadingView.close);
 }
 
 document.addEventListener('click', handleClick)
@@ -82,39 +90,6 @@ function handleClick(event) {
       refresh();
     }
   }
-}
-
-const getLoader = () => {
-  const ANIMATION_DURATION = 1000;
-  const $loader = document.getElementById('loading');
-  $loader.style.animationDuration = `${ANIMATION_DURATION / 1000}s`;
-
-  return {
-    close() {
-      $loader.classList.add('hiding');
-      setTimeout(() => {
-        $loader.classList.add('hidden');
-        $loader.classList.remove('hiding');
-      }, ANIMATION_DURATION);
-    },
-    open() {
-      $loader.classList.add('opening');
-      $loader.classList.remove('hidden')
-      return new Promise((resolve, reject) => setTimeout(() => {
-        $loader.classList.remove('opening')
-        resolve();
-      }, ANIMATION_DURATION));
-    }
-  }
-}
-
-function refresh() {
-  const loader = getLoader();
-  
-  loader.open()
-    .then(getQuote)
-    .then(updateQuote)
-    .then(loader.close);
 }
 
 refresh();
