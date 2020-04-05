@@ -99,6 +99,10 @@ body::-webkit-scrollbar {
   justify-content: center;
   flex-direction: column;
 }
+#loading .text-content {
+  opacity: 0;
+  transition: opacity .25s ease;
+}
 #loading.hidden {
   clip-path: circle(0%);
 }
@@ -107,6 +111,9 @@ body::-webkit-scrollbar {
 }
 #loading.hiding {
   animation-name: loading-close;
+}
+#loading.loaded .text-content {
+  opacity: 1;
 }
 
 #loading .text-content {

@@ -81,6 +81,21 @@ function refresh() {
     .then(loadingView.close);
 }
 
+function loadInitial() {
+  const $loadingView = document.getElementById('loading');
+
+  loadFont('BebasNeue')
+    .then(() => {
+      $loadingView.classList.add('loaded');
+      return getQuote();
+    })
+    .then(updateQuote)
+    .then(() => {
+      const loadingView = getLoadingView();
+      loadingView.close();
+    })
+}
+
 document.addEventListener('click', handleClick)
 
 function handleClick(event) {
@@ -92,4 +107,4 @@ function handleClick(event) {
   }
 }
 
-refresh();
+loadInitial();
