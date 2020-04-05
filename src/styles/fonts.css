@@ -1,0 +1,22 @@
+@font-face {font-family: "JIK";
+  src: url("../fonts/jik/jik.eot"); /* IE9*/
+  src: url("../fonts/jik/jik.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/jik/jik.woff2") format("woff2"), /* chrome、firefox */
+  url("../fonts/jik/jik.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/jik/jik.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/jik/jik.svg#GT Super Display Medium") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+  font-family: 'YEEZUS';
+  src: url('../fonts/yeezus/yeezus.eot?#iefix') format('embedded-opentype'),  url('../fonts/yeezus/yeezus.woff') format('woff'), url('../fonts/yeezus/yeezus.ttf')  format('truetype'), url('../fonts/yeezus/yeezus.svg#LibreBarcode39Text-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TLOP';
+  src: url('../fonts/tlop/tlop.eot?#iefix') format('embedded-opentype'),  url('../fonts/tlop/tlop.woff') format('woff'), url('../fonts/tlop/tlop.ttf')  format('truetype'), url('../fonts/tlop/tlop.svg#LibreBarcode39Text-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

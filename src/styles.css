@@ -1,10 +1,32 @@
-#background-overlay {
-  position: fixed;
-  bottom: 0;
-  top: 0;
-  right: 0;
-  left: 0;
+@import './styles/reset.css';
+@import './styles/fonts.css';
+
+body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.quote-container {
+  position: relative;
+  z-index: 100;
+  color: #fff;
+  font-size: 64px;
+  position: absolute;
+  max-width: 70%;
+  margin: 0 auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+#quote {
+  max-width: 100%;
 }

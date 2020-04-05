@@ -12,9 +12,13 @@ const getRandomTheme = (overlayOpacity = 0.6) => {
     },
     {
       // TLOP
-      overlay: `radial-gradient(circle, rgba(252,135,72,${overlayOpacity}) 0%, rgba(246,210,147,${overlayOpacity}) 21%, rgba(227,217,188,${overlayOpacity}) 57%, rgba(161,97,66,${overlayOpacity}) 83%, rgba(75,37,34,${overlayOpacity}) 100%)`, 
+      overlay: 'radial-gradient(circle, rgba(227,217,188,0.7) 0%, rgba(246,210,147,0.7) 35%, rgba(252,135,72,0.7) 65%, rgba(161,97,66,0.7) 90%, rgba(75,37,34,1) 100%)',
       textStyles: {
-        fontFamily: 'TLOP'
+        lineHeight: 1.3,
+        fontSize: '102px',
+        color: '#000',
+        fontFamily: 'TLOP',
+        textAlign: 'center'
       }
     },
     {
@@ -43,7 +47,7 @@ const getRandomTheme = (overlayOpacity = 0.6) => {
     },
   ]
 
-  // return themes[2]
+  return themes[0]
   return themes[Math.floor(Math.random() * themes.length)]
 } 
 
