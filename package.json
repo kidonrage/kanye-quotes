@@ -1,0 +1,29 @@
+{
+  "name": "kanye-quotes",
+  "version": "1.0.0",
+  "description": "Hyper inspirational app based on Kanye West life experience.",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kanye",
+    "west",
+    "quotes",
+    "js",
+    "javascript"
+  ],
+  "author": "Vlad Eliseev <freshymanchan@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^4.0.4",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
