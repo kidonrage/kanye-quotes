@@ -43,14 +43,17 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  z-index: 1;
 }
 #quote-container:hover .load-button {
   opacity: 0.5;
   bottom: -35px;
+  z-index: 1;
 }
 
 #quote-container:hover .load-button:hover {
   opacity: 1;
+  z-index: 1;
 }
 
 #quote {
@@ -105,6 +108,7 @@ body::-webkit-scrollbar {
 }
 #loading.hidden {
   clip-path: circle(0%);
+  visibility: hidden;
 }
 #loading.opening {
   animation-name: loading-open;
