@@ -37,6 +37,17 @@ export default [
     }
   },
   {
+    // YE
+    overlay: `radial-gradient(circle, rgba(119,142,171,0.75) 0%, rgba(15,33,45,0.9) 100%)`, 
+    textStyles: {
+      fontFamily: 'YE',
+      color: 'rgb(0,254,32)',
+      // textTransform: 'capitalize',
+      lineHeight: '1.3',
+      fontSize: '5.25rem',
+    }
+  },
+  {
     // JIK
     overlay: `radial-gradient(circle, rgba(38,0,212,0.6) 0%, rgba(36,0,193,0.6) 11%, rgba(33,0,184,0.6) 100%)`, 
     textStyles: {
